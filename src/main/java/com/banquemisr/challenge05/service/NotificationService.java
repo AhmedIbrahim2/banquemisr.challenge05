@@ -1,6 +1,6 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
-import com.example.banquemisr.model.User;
+import com.banquemisr.challenge05.model.User;
 
 public interface NotificationService {
 

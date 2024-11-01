@@ -1,10 +1,8 @@
-package com.example.banquemisr.model.dto;
+package com.banquemisr.challenge05.model.dto;
 
-import com.example.banquemisr.model.History;
-import com.example.banquemisr.model.Task;
-import com.example.banquemisr.model.enums.Status;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.banquemisr.challenge05.model.History;
+import com.banquemisr.challenge05.model.Task;
+import com.banquemisr.challenge05.model.enums.Status;
 import lombok.*;
 
 import java.time.LocalDateTime;

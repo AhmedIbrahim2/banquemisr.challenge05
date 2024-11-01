@@ -1,14 +1,13 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
 
-import com.example.banquemisr.exception.NotFoundException;
-import com.example.banquemisr.model.Task;
-import com.example.banquemisr.model.User;
-import com.example.banquemisr.model.dto.TaskDto;
-import com.example.banquemisr.model.dto.UserDto;
-import com.example.banquemisr.repository.TaskRepository;
-import com.example.banquemisr.repository.UserRepository;
-import org.springframework.beans.BeanUtils;
+import com.banquemisr.challenge05.exception.NotFoundException;
+import com.banquemisr.challenge05.model.Task;
+import com.banquemisr.challenge05.model.User;
+import com.banquemisr.challenge05.model.dto.TaskDto;
+import com.banquemisr.challenge05.model.dto.UserDto;
+import com.banquemisr.challenge05.repository.TaskRepository;
+import com.banquemisr.challenge05.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

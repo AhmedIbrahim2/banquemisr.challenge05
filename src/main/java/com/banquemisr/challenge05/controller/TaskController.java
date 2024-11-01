@@ -1,14 +1,18 @@
-package com.example.banquemisr.controller;
+package com.banquemisr.challenge05.controller;
 
 
-import com.example.banquemisr.model.dto.TaskDto;
-import com.example.banquemisr.model.enums.Status;
-import com.example.banquemisr.service.TaskService;
+import com.banquemisr.challenge05.model.dto.TaskDto;
+import com.banquemisr.challenge05.model.enums.Status;
+import com.banquemisr.challenge05.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/task")
@@ -52,5 +56,18 @@ public class TaskController {
     }
 
 
+    @GetMapping("/search")
+    public ResponseEntity<List<TaskDto>> searchTasks(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String description,
+            @RequestParam(required = false) Status status,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime dueDate,
+            @RequestParam(required = false) Integer page,
+            @RequestParam(defaultValue = "10") int size
+    )
+    {
+
+        return new ResponseEntity<>(taskService.getTasksByCriteria(title, description, status, dueDate , page , size),HttpStatus.CREATED);
+    }
 
 }

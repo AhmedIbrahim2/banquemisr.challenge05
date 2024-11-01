@@ -1,4 +1,4 @@
-package com.example.banquemisr.model;
+package com.banquemisr.challenge05.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;

@@ -1,7 +1,7 @@
-package com.example.banquemisr.repository;
+package com.banquemisr.challenge05.repository;
 
-import com.example.banquemisr.model.Notification;
-import com.example.banquemisr.model.User;
+import com.banquemisr.challenge05.model.Notification;
+import com.banquemisr.challenge05.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

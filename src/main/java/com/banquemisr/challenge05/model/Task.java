@@ -1,8 +1,8 @@
-package com.example.banquemisr.model;
+package com.banquemisr.challenge05.model;
 
 
-import com.example.banquemisr.model.enums.Priority;
-import com.example.banquemisr.model.enums.Status;
+import com.banquemisr.challenge05.model.enums.Priority;
+import com.banquemisr.challenge05.model.enums.Status;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,15 +1,13 @@
-package com.example.banquemisr.controller;
+package com.banquemisr.challenge05.controller;
 
 
-import com.example.banquemisr.model.dto.HistoryDto;
-import com.example.banquemisr.service.HistoryService;
+import com.banquemisr.challenge05.model.dto.HistoryDto;
+import com.banquemisr.challenge05.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/history")

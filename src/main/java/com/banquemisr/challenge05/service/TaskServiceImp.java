@@ -1,25 +1,26 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
 
-import com.example.banquemisr.exception.NotFoundException;
-import com.example.banquemisr.model.History;
-import com.example.banquemisr.model.Task;
-import com.example.banquemisr.model.User;
-import com.example.banquemisr.model.dto.TaskDto;
-import com.example.banquemisr.model.enums.Status;
-import com.example.banquemisr.repository.HistoryRepository;
-import com.example.banquemisr.repository.TaskRepository;
-import com.example.banquemisr.repository.UserRepository;
-import org.springframework.beans.BeanUtils;
+import com.banquemisr.challenge05.exception.NotFoundException;
+import com.banquemisr.challenge05.model.History;
+import com.banquemisr.challenge05.model.Task;
+import com.banquemisr.challenge05.model.TaskSpecification;
+import com.banquemisr.challenge05.model.User;
+import com.banquemisr.challenge05.model.dto.TaskDto;
+import com.banquemisr.challenge05.model.enums.Status;
+import com.banquemisr.challenge05.repository.HistoryRepository;
+import com.banquemisr.challenge05.repository.TaskRepository;
+import com.banquemisr.challenge05.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -100,7 +101,7 @@ public class TaskServiceImp implements TaskService {
         taskRepository.save(task1);
 
         String notificationMessage = "Status of Task :" + task1.getTitle() +
-                ". Due date: " + task1.getDueDate() +"has been Updated Into: "+task1.getStatus() ;
+                ". Due date: " + task1.getDueDate() +"  has been Updated Into: "+task1.getStatus() ;
         notificationService.createNotification(task1.getCreator(), notificationMessage);
 
         return TaskDto.toDto(task1);
@@ -145,5 +146,15 @@ public class TaskServiceImp implements TaskService {
         return "Task deleted";
     }
 
+    @Override
+    public List<TaskDto> getTasksByCriteria(String title, String description, Status status, LocalDateTime dueDate , int page, int size) {
 
+        Specification<Task> specification = TaskSpecification.getTasksByCriteria(title, description, status, dueDate);
+
+        Pageable pageable = PageRequest.of(page, size); // Creating pageable with the page and size
+
+        return taskRepository.findAll(specification)
+                .stream().map(TaskDto::toDto)
+                .collect(Collectors.toList());
+    }
 }

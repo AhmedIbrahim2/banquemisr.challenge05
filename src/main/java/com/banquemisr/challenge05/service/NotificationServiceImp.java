@@ -1,8 +1,8 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
-import com.example.banquemisr.model.Notification;
-import com.example.banquemisr.model.User;
-import com.example.banquemisr.repository.NotificationRepository;
+import com.banquemisr.challenge05.model.Notification;
+import com.banquemisr.challenge05.model.User;
+import com.banquemisr.challenge05.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class NotificationServiceImp implements NotificationService {
         notification.setRead(false);
         notificationRepository.save(notification);
 
-        emailService.sendEmail(user.getEmail(), "Task Notification", message);
+        emailService.sendEmail(user.getEmail(), " Task Notification", message);
 
         return "Notification Saved Successfully";
     }

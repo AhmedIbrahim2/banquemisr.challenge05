@@ -1,21 +1,16 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
-import com.example.banquemisr.model.History;
-import com.example.banquemisr.model.Task;
-import com.example.banquemisr.model.User;
-import com.example.banquemisr.model.dto.HistoryDto;
-import com.example.banquemisr.model.dto.TaskDto;
-import com.example.banquemisr.model.dto.UserDto;
-import com.example.banquemisr.repository.HistoryRepository;
-import com.example.banquemisr.repository.TaskRepository;
-import com.example.banquemisr.repository.UserRepository;
+import com.banquemisr.challenge05.model.History;
+import com.banquemisr.challenge05.model.Task;
+import com.banquemisr.challenge05.model.dto.HistoryDto;
+import com.banquemisr.challenge05.repository.HistoryRepository;
+import com.banquemisr.challenge05.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

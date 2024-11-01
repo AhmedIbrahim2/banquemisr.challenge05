@@ -1,4 +1,4 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

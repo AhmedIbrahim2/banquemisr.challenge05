@@ -1,12 +1,10 @@
-package com.example.banquemisr.repository;
+package com.banquemisr.challenge05.repository;
 
-import com.example.banquemisr.model.History;
+import com.banquemisr.challenge05.model.History;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 
 @Repository

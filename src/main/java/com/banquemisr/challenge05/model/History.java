@@ -1,11 +1,9 @@
-package com.example.banquemisr.model;
+package com.banquemisr.challenge05.model;
 
-import com.example.banquemisr.model.enums.Status;
+import com.banquemisr.challenge05.model.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
-import java.security.Timestamp;
 import java.time.LocalDateTime;
 
 @Data

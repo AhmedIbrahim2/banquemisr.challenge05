@@ -1,7 +1,7 @@
-package com.example.banquemisr.model;
+package com.banquemisr.challenge05.model;
 
 
-import com.example.banquemisr.model.enums.Role;
+import com.banquemisr.challenge05.model.enums.Role;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;

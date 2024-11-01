@@ -1,10 +1,10 @@
-package com.example.banquemisr.model.dto;
+package com.banquemisr.challenge05.model.dto;
 
 
-import com.example.banquemisr.model.Notification;
-import com.example.banquemisr.model.Task;
-import com.example.banquemisr.model.User;
-import com.example.banquemisr.model.enums.Role;
+import com.banquemisr.challenge05.model.Notification;
+import com.banquemisr.challenge05.model.Task;
+import com.banquemisr.challenge05.model.User;
+import com.banquemisr.challenge05.model.enums.Role;
 import lombok.*;
 
 import java.util.List;

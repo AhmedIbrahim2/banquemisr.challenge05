@@ -1,4 +1,4 @@
-package com.example.banquemisr.exception;
+package com.banquemisr.challenge05.exception;
 
 public class NotFoundException extends RuntimeException {
     String message;

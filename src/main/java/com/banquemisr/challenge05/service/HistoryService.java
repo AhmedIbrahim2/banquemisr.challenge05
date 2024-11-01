@@ -1,9 +1,7 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
-import com.example.banquemisr.model.dto.HistoryDto;
+import com.banquemisr.challenge05.model.dto.HistoryDto;
 import org.springframework.data.domain.Page;
-
-import java.util.List;
 
 public interface HistoryService {
 

@@ -1,14 +1,12 @@
-package com.example.banquemisr.controller;
+package com.banquemisr.challenge05.controller;
 
 
-import com.example.banquemisr.model.dto.TaskDto;
-import com.example.banquemisr.model.dto.UserDto;
-import com.example.banquemisr.service.UserService;
-import lombok.AllArgsConstructor;
+import com.banquemisr.challenge05.model.dto.TaskDto;
+import com.banquemisr.challenge05.model.dto.UserDto;
+import com.banquemisr.challenge05.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

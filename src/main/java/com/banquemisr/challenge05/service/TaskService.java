@@ -1,11 +1,12 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
-import com.example.banquemisr.model.dto.TaskDto;
-import com.example.banquemisr.model.enums.Status;
+import com.banquemisr.challenge05.model.dto.TaskDto;
+import com.banquemisr.challenge05.model.enums.Status;
 import org.springframework.data.domain.Page;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 public interface TaskService {
 
@@ -17,5 +18,9 @@ public interface TaskService {
 //    public List<TaskDto> getAllTasks();
     Page<TaskDto> getPaginatedTasks(int page, int size);
      String  deleteTask(Long id);
+
+
+
+    public List<TaskDto> getTasksByCriteria(String title, String description, Status status, LocalDateTime dueDate , int page, int size) ;
 
 }

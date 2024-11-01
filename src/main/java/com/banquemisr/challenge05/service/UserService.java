@@ -1,7 +1,7 @@
-package com.example.banquemisr.service;
+package com.banquemisr.challenge05.service;
 
-import com.example.banquemisr.model.dto.TaskDto;
-import com.example.banquemisr.model.dto.UserDto;
+import com.banquemisr.challenge05.model.dto.TaskDto;
+import com.banquemisr.challenge05.model.dto.UserDto;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
