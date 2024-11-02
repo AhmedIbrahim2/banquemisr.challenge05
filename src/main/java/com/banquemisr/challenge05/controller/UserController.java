@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,15 +21,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/add")
-    public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
-        try {
-            return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
-
-        } catch (Exception e) {
-            throw new RuntimeException("Error while adding user", e);
-        }
-    }
 
 
 
@@ -43,6 +35,7 @@ public class UserController {
 
 
     @GetMapping("/getUserById/{id}")
+    @PreAuthorize("hasRole('ADMIN')") // Only users with the ROLE_ADMIN can access this method
     public ResponseEntity<UserDto> getUserById(@PathVariable Long id) {
         try {
             return new ResponseEntity<>( userService.getUser(id), HttpStatus.OK)  ;
@@ -52,7 +45,9 @@ public class UserController {
     }
 
 
+    // Admin
     @GetMapping("/getAllUser")
+    @PreAuthorize("hasRole('ADMIN')") // Only users with the ROLE_ADMIN can access this method
     public ResponseEntity<Page<UserDto>> getAllUser(@RequestParam(required = false) Integer page,
                                                     @RequestParam(defaultValue = "10") int size  ) {
         try {

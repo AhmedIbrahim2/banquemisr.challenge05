@@ -32,8 +32,8 @@ public class History {
 
 
 
-    @ManyToOne
-    @JoinColumn(name = "task_id",nullable = false)
+    @ManyToOne(cascade = CascadeType.REMOVE , fetch = FetchType.EAGER)
+    @JoinColumn(name = "task_id",nullable = false   )
     private Task task;
 
 }

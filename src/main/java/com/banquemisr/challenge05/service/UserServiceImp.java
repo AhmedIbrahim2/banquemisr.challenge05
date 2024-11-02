@@ -6,8 +6,10 @@ import com.banquemisr.challenge05.model.Task;
 import com.banquemisr.challenge05.model.User;
 import com.banquemisr.challenge05.model.dto.TaskDto;
 import com.banquemisr.challenge05.model.dto.UserDto;
+import com.banquemisr.challenge05.repository.HistoryRepository;
 import com.banquemisr.challenge05.repository.TaskRepository;
 import com.banquemisr.challenge05.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,8 +28,12 @@ public class UserServiceImp implements UserService {
     @Autowired
     private TaskRepository taskRepository;
 
+    @Autowired
+    private HistoryRepository historyRepository;
 
-    @Override
+
+
+
     public UserDto createUser(UserDto userDto) {
        User user = userRepository.save(UserDto.toEntity(userDto));
          return UserDto.toDto(user);
@@ -71,6 +77,8 @@ public class UserServiceImp implements UserService {
                 .orElseThrow(() -> new NotFoundException("Task not found"));
 
         taskRepository.deleteByUserId(id);
+
+
         userRepository.delete(user);
         return "User deleted";
     }

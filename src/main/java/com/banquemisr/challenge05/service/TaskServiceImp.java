@@ -1,6 +1,7 @@
 package com.banquemisr.challenge05.service;
 
 
+import com.banquemisr.challenge05.config.AuthService;
 import com.banquemisr.challenge05.exception.NotFoundException;
 import com.banquemisr.challenge05.model.History;
 import com.banquemisr.challenge05.model.Task;
@@ -11,6 +12,7 @@ import com.banquemisr.challenge05.model.enums.Status;
 import com.banquemisr.challenge05.repository.HistoryRepository;
 import com.banquemisr.challenge05.repository.TaskRepository;
 import com.banquemisr.challenge05.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -37,11 +39,17 @@ public class TaskServiceImp implements TaskService {
     @Autowired
     private NotificationService notificationService;
 
+    @Autowired
+    private AuthService authService;
+
     @Override
+    @Transactional
     public TaskDto createTask(TaskDto task) {
 
-        User creator = userRepository.findById(task.getCreatorId()).orElseThrow(() -> new RuntimeException("User not found"));
+        Long id =  authService.getCurrentUserId();
+        User creator = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
 
+        task.setCreatorId(id);
         Task task1 = taskRepository.save(TaskDto.toEntity(task, creator));
         String notificationMessage = "A new task has been created: " + task1.getTitle() +
                 ". Due date: " + task.getDueDate();
@@ -54,6 +62,7 @@ public class TaskServiceImp implements TaskService {
     public TaskDto updateTask(TaskDto task , Long id) {
         Task task1 = taskRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Task not found"));
+
         if (!task1.getStatus().equals(task.getStatus())){
             History history = new History();
             history.setOldStatus(task1.getStatus());
@@ -80,6 +89,7 @@ public class TaskServiceImp implements TaskService {
         }
 
       //  BeanUtils.copyProperties(task, task1,"id");
+
 
         return TaskDto.toDto(taskRepository.save(task1));
 
@@ -137,7 +147,7 @@ public class TaskServiceImp implements TaskService {
     public String deleteTask(Long id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Task not found"));
-        User creator = task.getCreator();
+       User creator = task.getCreator();
         creator.getCreatedTasks().remove(task);
         userRepository.save(creator);
 
